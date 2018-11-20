@@ -1,0 +1,19 @@
+<div class="app-header">
+  <div class="header-container">
+    <div class="app-title">
+      <a routeLink="">Spadeworx Software Services</a>
+    </div>
+    <ul>
+      <li>
+        <a routerLink="" [class.activated]="currentUrl == '/'">
+          <i class="material-icons">supervised_user_circle</i>
+        </a>
+      </li>
+      <li>
+        <a routerLink="posts" [class.activated]="currentUrl == '/posts'">
+          <i class="material-icons">message</i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
