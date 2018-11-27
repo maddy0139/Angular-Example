@@ -1,32 +1,28 @@
 .app-header{
-    position: fixed;
     width: 100%;
     -webkit-box-shadow: 0 2px 8px #f0f1f2;
     box-shadow: 0 2px 8px #f0f1f2;
     z-index: 10;
     padding: 0;
-    background: #fff;
     height: 64px;
     line-height: 64px;
-    background-color: #1890ff;
+    background-color: #1976D2;
+
     .header-container{
         max-width: 1200px;
         margin-left: auto;
         margin-right: auto;
         padding-left: 15px;
         padding-right: 15px;
-        
-
         .app-title{
-            float: left;
-            color: #f0f1f2;
-            font-weight: 700;
-
+            width: 180px;
+            height: 60px;
+            display: inline-block;
+            background: url('/assets/app-logo.png');
             a{
                 text-decoration: none;
                 color: #f0f1f2;
-            }
-            
+            }  
         }
 
         ul {
@@ -34,13 +30,12 @@
             padding: 0;
             margin: 0;
             float: right;
-    
+            .header-icon{
+                padding: 10px !important;
+            }
             li {
                 float: left;
                 height: 64px;
-                :hover{
-                    border-bottom: 2px solid #fff;
-                }
                 a {
                     color: #fff;
                     padding: 20px;

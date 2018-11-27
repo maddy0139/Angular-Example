@@ -1,0 +1,15 @@
+#Generate a new app
+ng new app-name --style=scss --routing
+
+#Generate component
+ng generate component comp-name --module src/app/component
+ng g c components/header --module src/app --skip-import
+
+#Add Ant-Design
+ng add ng-zorro-antd --i18n=en_US
+
+#Customize Ant-Design Theme
+ng add ng-zorro-antd --theme
+
+#Run Project
+ng serve -o
