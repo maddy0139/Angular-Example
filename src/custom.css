@@ -1,0 +1,55 @@
+.card-box {
+    background-color: #fff;
+    border: 1px solid #ededed;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+    padding: 20px;
+    
+}
+.profile-view .profile-img-wrap {
+    height: 150px;
+    width: 150px;
+}
+.profile-img-wrap {
+    height: 120px;
+    position: absolute;
+    width: 120px;
+    background: #fff;
+    overflow: hidden;
+}
+.profile-view .profile-basic {
+    margin-left: 170px;
+}
+.profile-basic {
+    margin-left: 140px;
+}
+.profile-info-left {
+    border-right: 2px dashed #ccc;
+}
+.user-name {
+    color: #333;
+}
+.m-b-0 {
+    margin-bottom: 0 !important;
+}
+.m-t-0 {
+    margin-top: 0 !important;
+}
+.text-muted {
+    color: #777;
+}
+small {
+    font-size: 80%;
+}
+.staff-id {
+    margin-top: 5px;
+}
+.personal-info {
+    list-style: none;
+    margin-bottom: 0;
+    padding: 0;
+}
+.personal-info li {
+    margin-bottom: 10px;
+}

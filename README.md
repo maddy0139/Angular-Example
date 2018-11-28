@@ -5,6 +5,9 @@ ng new app-name --style=scss --routing
 ng generate component comp-name --module src/app/component
 ng g c components/header --module src/app --skip-import
 
+#Generate Services
+ng generate service service-name
+
 #Add Ant-Design
 ng add ng-zorro-antd --i18n=en_US
 ng add ng-zorro-antd --theme

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +16,18 @@ import zh from '@angular/common/locales/zh';
 import { ProfileComponent } from './components/employee/profile/profile.component';
 import { AddressComponent } from './components/employee/address/address.component';
 import { EmploymentDetailsComponent } from './components/employee/employment-details/employment-details.component';
+import { EducationComponent } from './components/employee/education/education.component';
+import { ExperienceComponent } from './components/employee/experience/experience.component';
+import { SkillsComponent } from './components/employee/skills/skills.component';
+import { DocumentAndIdsComponent } from './components/employee/document-and-ids/document-and-ids.component';
+import { ReportingStructureComponent } from './components/employee/reporting-structure/reporting-structure.component';
+import { ConfigService } from './services/ConfigService';
+
+const appInitializerFn = (appConfig: ConfigService) => {
+  return () => {
+    return appConfig.loadAppConfig();
+  }
+};
 
 registerLocaleData(zh);
 
@@ -27,7 +39,12 @@ registerLocaleData(zh);
     ForgotpassComponent,
     ProfileComponent,
     AddressComponent,
-    EmploymentDetailsComponent
+    EmploymentDetailsComponent,
+    EducationComponent,
+    ExperienceComponent,
+    SkillsComponent,
+    DocumentAndIdsComponent,
+    ReportingStructureComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +55,15 @@ registerLocaleData(zh);
     NgZorroAntdModule,
     ReactiveFormsModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: zh_CN }],
+  providers: [
+    ConfigService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: appInitializerFn,
+      multi: true,
+      deps: [ConfigService]
+    },
+    { provide: NZ_I18N, useValue: zh_CN }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

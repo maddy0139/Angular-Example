@@ -1,13 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 body{
-    margin:0px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    background-color: #eff3f6;
+    overflow-x: hidden;
+    .p-l-40{
+        padding-left: 40px;
+    }
+    .m-b-0{
+        margin-bottom: 0 !important;
+    }
     h5{
         margin-bottom: 0px !important;
         margin-top: 0.5em !important;
-    }
-    .row{
-        margin-left: 0px !important;
-        margin-right: 0px !important;
     }
     .ant-menu-item{
         padding: 0px 20px !important;
@@ -26,7 +31,7 @@ body{
         }
     
        #content {
-           padding: 40px 50px;
+           padding: 100px 50px;
        }
     }
 }

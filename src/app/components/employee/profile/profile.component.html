@@ -1,76 +1,91 @@
 <div class="profile">
-    <div class="row user-profile">
-        <div class="col-md-3 user-details user-avatar">
-          <i nz-icon  type="user"></i>
+    <div class="row">
+        <div class="col-sm-8">
+            <h4 class="page-title">My Profile</h4>
         </div>
-        <div class="col-md-3 user-details user-summary">
-            <div >Mahendra Kishorbhai Gohel</div>
-            <div >S1070423</div>
-            <div >
-                <span>Male</span> | <span>28 Yr(s)</span>
-            </div>
-            <div>
-                <span>Date of Birth: </span>16/09/1990<br/>
-                <span>Date of Joining: </span>05/03/2018
-            </div>
-        </div>
-        <div class="col-md-3 user-details user-address">
-            <h5>Current Address</h5>
-            <p>B-1101, Green Olive Apartment,
-                Hinjewadi Phase 1, Rajiv Gandhi Infotech Park Pune, Maharashtra,
-                411057 India
-            </p>
-        </div>
-        <div class="col-md-3 user-details user-address">
-            <h5>Contact Details</h5>
-            <span><i type="mobile"></i> 8000092239</span><br/>
-            <span><i type="mail"></i> mahendra.gohel@outlook.com</span>
+
+        <div class="col-sm-4 text-right m-b-30">
+            <button nz-button [nzType]="'primary'">Edit Profile</button>
         </div>
     </div>
-    <div class="employee-details">
-        <div class="employee-number">
-            <h5>Employee No</h5>
-            <span>S1070423</span>
-        </div>
-        <div class="job-desc">
-            <h5>Job Description</h5>
-            <span>Solution Developer</span>
-            <h5>Designation</h5>
-            <span>Solution Developer</span>
-        </div>
-        <div class="designation">
-            <h5>Department</h5>
-            <span>Delivery</span>
-            <h5>Location</h5>
-            <span>PUNE</span>
+    <div class="card-box">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="profile-preview">
+                    <div class="profile-img-wrap">
+                        <div class="user-avatar">
+                            <i nz-icon type="user"></i>
+                        </div>
+                    </div>
+                    <div class="profile-basic">
+                        <div class="row">
+                            <div class="col-md-5 dashed-border p-l-40">
+                                <div class="profile-info-left">
+                                    <h3 class="user-name m-t-0 m-b-0">Mahendra Gohel</h3>
+                                    <small class="text-muted">Solution Developer</small>
+                                    <div class="staff-id">Employee ID : S1070423</div>
+                                </div>
+                            </div>
+                            <div class="col-md-7 p-l-40">
+                                <ul class="personal-info">
+                                    <li>
+                                        <span class="title">Phone:</span>
+                                        <span class="text">
+                                            <a href="">8000092239</a>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span class="title">Email:</span>
+                                        <span class="text">
+                                            <a href="">mahendra.gohel@spadeworx.com</a>
+                                        </span>
+                                    </li>
+                                    <li>
+                                        <span class="title">Birthday:</span>
+                                        <span class="text">16th Sep</span>
+                                    </li>
+                                    <li>
+                                        <span class="title">Address:</span>
+                                        <span class="text">Hinjewadi Pune - 411057</span>
+                                    </li>
+                                    <li>
+                                        <span class="title">Gender:</span>
+                                        <span class="text">Male</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <nz-collapse>
-        <nz-collapse-panel [nzHeader]="'Employment Details'" [nzActive]="active">
-            <app-employment-details></app-employment-details>
-        </nz-collapse-panel>
-        <nz-collapse-panel [nzHeader]="'Person Details'" [nzActive]="active">
-            <app-employment-details></app-employment-details>
-        </nz-collapse-panel>
-        <nz-collapse-panel [nzHeader]="'Contact Details'" [nzActive]="active">
+    <div class="row">
+        <div class="col-md-3">
+            <app-skills></app-skills>
+        </div>
+        <div class="col-md-9">
+            <app-education></app-education>
+            <app-experience></app-experience>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
             <app-address></app-address>
+        </div>
+        <div class="col-md-4">
             <app-address></app-address>
+        </div>
+        <div class="col-md-4">
             <app-address></app-address>
-        </nz-collapse-panel>
-        <nz-collapse-panel [nzHeader]="'Education And Certification'" [nzActive]="active">
-            <app-address></app-address>
-        </nz-collapse-panel>
-        <nz-collapse-panel [nzHeader]="'Experience'" [nzActive]="active">
-            <app-address></app-address>
-        </nz-collapse-panel>
-        <nz-collapse-panel [nzHeader]="'Reporting Strucutre'" [nzActive]="active">
-            <app-address></app-address>
-        </nz-collapse-panel>
-        <nz-collapse-panel [nzHeader]="'Documents and Ids'" [nzActive]="active">
-            <app-address></app-address>
-        </nz-collapse-panel>
-        <nz-collapse-panel [nzHeader]="'Publications and Paper Presentation'" [nzActive]="active">
-            <app-address></app-address>
-        </nz-collapse-panel>
-    </nz-collapse>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <app-document-and-ids></app-document-and-ids>
+        </div>
+        <div class="col-md-6">
+            <app-reporting-structure></app-reporting-structure>
+        </div>
+    </div>
 </div>

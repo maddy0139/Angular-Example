@@ -1,3 +1,56 @@
-<p>
-  employment-details works!
-</p>
+<div class="employement-details" *ngFor="let detail of employeeDetails">
+  <div class="emp-detail-row col-md-6">
+    <label>Date Of Joining : {{detail.doj}}</label>
+  </div>
+  <div class="emp-detail-row col-md-6">
+    <label>Birthdate : {{detail.dob}}</label>
+  </div>
+  <div class="emp-detail-row col-md-6">
+    <label>Designation : {{detail.designation}}</label>
+  </div>
+  <div class="emp-detail-row col-md-6">
+    <label>Grade : {{detail.grade}}</label>
+  </div>
+  <div class="emp-detail-row col-md-6">
+    <label>Department : {{detail.deparment}}</label>
+  </div>
+  <div class="emp-detail-row col-md-6">
+    <label>Job Category : {{detail.jobCategory}}</label>
+  </div>
+  <div class="emp-detail-row col-md-6">
+    <label>Job Description : {{detail.jobDescription}}</label>
+  </div>
+  <div class="emp-detail-row col-md-6">
+    <label>Experience : {{detail.experience}}</label>
+  </div>
+  <div class="emp-detail-row col-md-6">
+    <label>Location : {{detail.location}}</label>
+  </div>
+  <div class="emp-detail-row col-md-6">
+    <label>Cost center : {{detail.costCenter}}</label>
+  </div>
+  <div class="emp-detail-row col-md-6">
+    <label>Status : {{detail.status}}</label>
+  </div>
+  <div class="emp-detail-row col-md-6">
+    <label>Employment Type : {{detail.employmentType}}</label>
+  </div>
+  <div class="emp-detail-row col-md-6">
+    <label>company : {{detail.company}}</label>
+  </div>
+  <div class="emp-detail-row col-md-6">
+    <label>Department : {{detail.department}}</label>
+  </div>
+  <div class="emp-detail-row col-md-6">
+    <label>Sub Department : {{detail.subDepartment}}</label>
+  </div>
+  <div class="emp-detail-row col-md-6">
+    <label>Probation EndDate : {{detail.probationEndDate}}</label>
+  </div>
+  <div class="emp-detail-row col-md-6">
+    <label>Confirmation Date : {{detail.confirmationDate}}</label>
+  </div>
+  <div class="emp-detail-row col-md-6">
+    <label>Region : {{detail.region}}</label>
+  </div>
+</div>
