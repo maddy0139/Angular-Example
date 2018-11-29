@@ -1,18 +1,13 @@
 <div class="login-box">
   <div class="login-form-wrapper">
-    <!--<div class="account-logo">
-      <a routerLink="/">
-        <img src="/assets/img/app-logo.png" alt="SpadeWorx">
-      </a>
-    </div>-->
     <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
       <h3>Login</h3>
       <nz-form-item>
         <nz-form-control>
           <nz-input-group [nzPrefix]="prefixUser">
-            <input type="text" nz-input formControlName="userName" placeholder="Username">
+            <input type="text" nz-input formControlName="usernameOrEmail" placeholder="Username Or Email">
           </nz-input-group>
-          <nz-form-explain *ngIf="validateForm.get('userName').dirty && validateForm.get('userName').errors">Please input your username!</nz-form-explain>
+          <nz-form-explain *ngIf="validateForm.get('usernameOrEmail').dirty && validateForm.get('usernameOrEmail').errors">Please input your usernameOrEmail!</nz-form-explain>
         </nz-form-control>
       </nz-form-item>
       <nz-form-item>
