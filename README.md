@@ -10,7 +10,7 @@ ng generate service service-name
 
 #Add Ant-Design
 ng add ng-zorro-antd --i18n=en_US
-ng add ng-zorro-antd --theme
+ng add ng-zorro-antd --theme --i18n=en_US
 
 #Run Project
 ng serve -o

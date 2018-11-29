@@ -1,0 +1,68 @@
+<div class="designation">
+  <div class="form-wrapper">
+    <div class="row">
+      <div class="col-sm-8">
+        <h4 class="page-title">Designations</h4>
+      </div>
+
+      <div class="col-sm-4 text-right m-b-30">
+        <button nz-button nzType="primary" [nzSize]="size" (click)="showModal()">
+          <i nz-icon type="plus"></i>Add Designation</button>
+      </div>
+    </div>
+    <nz-modal [(nzVisible)]="isVisible" [nzTitle]="modalTitle" [nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="handleCancel()">
+      <ng-template #modalTitle>
+        Add Designation
+      </ng-template>
+
+      <ng-template #modalContent>
+        <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+          <nz-form-item>
+            <nz-form-control>
+              <nz-input-group>
+                <input type="text" nz-input formControlName="designationName" placeholder="Designation Name">
+              </nz-input-group>
+              <nz-form-explain *ngIf="validateForm.get('designationName').dirty && validateForm.get('designationName').errors">Please input designation name!</nz-form-explain>
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-control>
+              <nz-select style="width: 100%;" formControlName="departmentId" [(ngModel)]="selectedValue" nzAllowClear nzPlaceHolder="Select Department">
+                <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
+                <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
+              </nz-select>
+              <nz-form-explain *ngIf="validateForm.get('departmentId').dirty && validateForm.get('departmentId').errors">Please select department name!</nz-form-explain>
+            </nz-form-control>
+          </nz-form-item>
+        </form>
+      </ng-template>
+
+      <ng-template #modalFooter>
+        <button nz-button nzType="default" (click)="handleCancel()">Cancel</button>
+        <button nz-button nzType="primary" (click)="submitForm()" [nzLoading]="isConfirmLoading">Submit</button>
+      </ng-template>
+    </nz-modal>
+    <nz-table #basicTable [nzData]="dataSet">
+      <thead>
+        <tr>
+          <th>Designtion Name</th>
+          <th>Department</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data">
+          <td>{{data.designationName}}</td>
+          <td>{{data.department}}</td>
+          <td>
+            <a>Action 一 {{data.name}}</a>
+            <nz-divider nzType="vertical"></nz-divider>
+            <a>Delete</a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+
+
+  </div>
+</div>

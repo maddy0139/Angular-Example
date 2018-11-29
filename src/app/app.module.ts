@@ -8,7 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ForgotpassComponent } from './components/forgotpass/forgotpass.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgZorroAntdModule, NZ_I18N, en_US, zh_CN } from 'ng-zorro-antd';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
@@ -22,6 +22,8 @@ import { SkillsComponent } from './components/employee/skills/skills.component';
 import { DocumentAndIdsComponent } from './components/employee/document-and-ids/document-and-ids.component';
 import { ReportingStructureComponent } from './components/employee/reporting-structure/reporting-structure.component';
 import { ConfigService } from './services/ConfigService';
+import { DesignationComponent } from 'src/app/components/designation/designation.component';
+import { JwtInterceptor } from 'src/app/services/jwt.interceptor';
 
 const appInitializerFn = (appConfig: ConfigService) => {
   return () => {
@@ -29,7 +31,7 @@ const appInitializerFn = (appConfig: ConfigService) => {
   }
 };
 
-registerLocaleData(zh);
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -44,7 +46,8 @@ registerLocaleData(zh);
     ExperienceComponent,
     SkillsComponent,
     DocumentAndIdsComponent,
-    ReportingStructureComponent
+    ReportingStructureComponent,
+    DesignationComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +66,8 @@ registerLocaleData(zh);
       multi: true,
       deps: [ConfigService]
     },
-    { provide: NZ_I18N, useValue: zh_CN }],
+    { provide: NZ_I18N, useValue: en_US },
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
