@@ -17,6 +17,9 @@ export class DataService {
   deleteAuthToken(){
     this.authToken.next('');
   }
+  getAuthToken(){
+    return this.authToken;
+  }
 
   
 

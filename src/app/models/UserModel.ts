@@ -1,10 +1,10 @@
 export interface IUser {
-    usernameOrEmail: string,
+    usernameOrEmail?: string,
     password?: string,
 }
 
 export class User implements IUser {
-    usernameOrEmail: string;
+    usernameOrEmail?: string;
     password?: string;
     constructor(Data: IUser) {
         if (Data) {

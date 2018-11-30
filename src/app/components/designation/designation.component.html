@@ -28,8 +28,7 @@
           <nz-form-item>
             <nz-form-control>
               <nz-select style="width: 100%;" formControlName="departmentId" [(ngModel)]="selectedValue" nzAllowClear nzPlaceHolder="Select Department">
-                <nz-option nzValue="jack" nzLabel="Jack"></nz-option>
-                <nz-option nzValue="lucy" nzLabel="Lucy"></nz-option>
+                <nz-option *ngFor="let department of departments" nzValue="{{department.id}}" nzLabel="{{department.name}}"></nz-option>
               </nz-select>
               <nz-form-explain *ngIf="validateForm.get('departmentId').dirty && validateForm.get('departmentId').errors">Please select department name!</nz-form-explain>
             </nz-form-control>
@@ -42,7 +41,7 @@
         <button nz-button nzType="primary" (click)="submitForm()" [nzLoading]="isConfirmLoading">Submit</button>
       </ng-template>
     </nz-modal>
-    <nz-table #basicTable [nzData]="dataSet">
+    <nz-table #basicTable [nzData]="designations">
       <thead>
         <tr>
           <th>Designtion Name</th>
@@ -52,12 +51,12 @@
       </thead>
       <tbody>
         <tr *ngFor="let data of basicTable.data">
-          <td>{{data.designationName}}</td>
+          <td>{{data.designation}}</td>
           <td>{{data.department}}</td>
           <td>
-            <a>Action 一 {{data.name}}</a>
+            <a class="edit-icon"><i nz-icon type="edit"></i></a>
             <nz-divider nzType="vertical"></nz-divider>
-            <a>Delete</a>
+            <a class="delete-icon"><i nz-icon type="delete"></i></a>
           </td>
         </tr>
       </tbody>

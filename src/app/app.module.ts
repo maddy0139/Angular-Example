@@ -24,6 +24,7 @@ import { ReportingStructureComponent } from './components/employee/reporting-str
 import { ConfigService } from './services/ConfigService';
 import { DesignationComponent } from 'src/app/components/designation/designation.component';
 import { JwtInterceptor } from 'src/app/services/jwt.interceptor';
+import { DepartmentComponent } from './components/department/department.component';
 
 const appInitializerFn = (appConfig: ConfigService) => {
   return () => {
@@ -47,7 +48,8 @@ registerLocaleData(en);
     SkillsComponent,
     DocumentAndIdsComponent,
     ReportingStructureComponent,
-    DesignationComponent
+    DesignationComponent,
+    DepartmentComponent
   ],
   imports: [
     BrowserModule,

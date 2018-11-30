@@ -32,6 +32,16 @@ body{
     
        #content {
            padding: 100px 50px;
+           .edit-icon{
+               :hover{
+                   color:#2196F3;
+               }
+           }
+           .delete-icon{
+            :hover{
+                color:red;
+            }
+        }
        }
     }
 }

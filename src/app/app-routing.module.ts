@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ForgotpassComponent } from './components/forgotpass/forgotpass.component';
 import { ProfileComponent } from './components/employee/profile/profile.component';
 import { DesignationComponent } from 'src/app/components/designation/designation.component';
+import { DepartmentComponent } from './components/department/department.component';
 
 const routes: Routes = [
   {
@@ -23,8 +24,12 @@ const routes: Routes = [
     component:ProfileComponent
   },
   {
-    path:'designation',
+    path:'designations',
     component:DesignationComponent
+  },
+  {
+    path:'departments',
+    component:DepartmentComponent
   }
 ];
 

@@ -6,7 +6,7 @@ import {
   Validators
 } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import {User,IUser} from '../../models/UserModel';
 
 @Component({
@@ -16,6 +16,8 @@ import {User,IUser} from '../../models/UserModel';
 })
 export class LoginComponent implements OnInit {
   validateForm: FormGroup;
+  route:ActivatedRoute;
+
   User:User;
   
   submitForm(): void {
@@ -29,6 +31,7 @@ export class LoginComponent implements OnInit {
       this._AuthService.userAuthentication(this.User).subscribe(
         (success:IUser)=>{
           console.log(success);
+          this.router.navigate(["/myprofiles"]);
         },
         error=>{
           console.log(error);
@@ -42,9 +45,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      userName: [ null, [ Validators.required ] ],
-      password: [ null, [ Validators.required ] ],
-      remember: [ true ]
+      usernameOrEmail: [ null, [ Validators.required ] ],
+      password: [ null, [ Validators.required ] ]
     });
   }
 }
