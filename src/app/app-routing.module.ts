@@ -5,11 +5,12 @@ import { ForgotpassComponent } from './components/forgotpass/forgotpass.componen
 import { ProfileComponent } from './components/employee/profile/profile.component';
 import { DesignationComponent } from 'src/app/components/designation/designation.component';
 import { DepartmentComponent } from './components/department/department.component';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 const routes: Routes = [
   {
     path:'',
-    component:LoginComponent
+    component:LoginComponent,
   },
   {
     path:'forgotpass',
@@ -21,15 +22,18 @@ const routes: Routes = [
   },
   {
     path:'myprofile',
-    component:ProfileComponent
+    component:ProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:'designations',
-    component:DesignationComponent
+    component:DesignationComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:'departments',
-    component:DepartmentComponent
+    component:DepartmentComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

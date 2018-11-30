@@ -25,6 +25,7 @@ import { ConfigService } from './services/ConfigService';
 import { DesignationComponent } from 'src/app/components/designation/designation.component';
 import { JwtInterceptor } from 'src/app/services/jwt.interceptor';
 import { DepartmentComponent } from './components/department/department.component';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 const appInitializerFn = (appConfig: ConfigService) => {
   return () => {
@@ -69,7 +70,7 @@ registerLocaleData(en);
       deps: [ConfigService]
     },
     { provide: NZ_I18N, useValue: en_US },
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
