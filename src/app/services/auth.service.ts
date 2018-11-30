@@ -27,7 +27,8 @@ export class AuthService {
       map(data=>{
         if(data && data.payload.accessToken)
         {
-          localStorage.setItem("user",data);
+          localStorage.setItem("user",JSON.stringify(data));
+          this.setAuthToken(data.payload.accessToken);
         }
         return data;
       })
@@ -46,15 +47,7 @@ export class AuthService {
 
   addDesignation(Data:Designation)
   {
-    return this.http.post<any>(`${this.ApiUrl}/designation/new?departmentId=${Data.departmentId}`,{"name":Data.designationName}).pipe(
-      map(data=>{
-        if(data && data.payload.accessToken)
-        {
-          localStorage.setItem("user",data);
-        }
-        return data;
-      })
-    )
+    return this.http.post<any>(`${this.ApiUrl}/designation/new?departmentId=${Data.departmentId}`,{"name":Data.designationName});
   }
   getAllDesignation()
   {

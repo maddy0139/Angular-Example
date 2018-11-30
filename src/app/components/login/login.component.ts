@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
       this._AuthService.userAuthentication(this.User).subscribe(
         (success:IUser)=>{
           console.log(success);
-          this.router.navigate(["/myprofiles"]);
+          this.router.navigate(["/myprofile"]);
         },
         error=>{
           console.log(error);
