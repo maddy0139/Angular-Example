@@ -9,22 +9,14 @@ isAuthenticated=false;
     constructor(private router: Router,private _data:AuthService) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        this._data.jwtToken.subscribe(
-            jwtToken=>{
-              if(jwtToken !="")
-              {
-                this.isAuthenticated = true;
-              }
-              else
-              {
-                  this.isAuthenticated = false;
-              }
-            }
-          )
-        if (this.isAuthenticated) {
+        
+        const user_token = localStorage.getItem("user_token");
+        if (user_token) {
             // logged in so return true
+            this._data.setAuthToken(true);
             return true;
         }
+        
         // not logged in so redirect to login page with the return url
         this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
         return false;

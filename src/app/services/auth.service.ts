@@ -14,8 +14,8 @@ import {map} from 'rxjs/Operators';
 export class AuthService {
 
   ApiUrl:string;
-  private authToken = new BehaviorSubject('');
-  jwtToken = this.authToken.asObservable();
+  private authenticated = new BehaviorSubject(false);
+  isAuthenticated = this.authenticated.asObservable();
   
   constructor(private http:HttpClient,private _config:ConfigService) {
     this.ApiUrl = _config.Config.ApiUrl;
@@ -27,22 +27,22 @@ export class AuthService {
       map(data=>{
         if(data && data.payload.accessToken)
         {
-          localStorage.setItem("user",JSON.stringify(data));
-          this.setAuthToken(data.payload.accessToken);
+          localStorage.setItem("user_token",data.payload.accessToken);
+          this.setAuthToken(true);
         }
         return data;
       })
     )
   }
 
-  setAuthToken(token: string) {
-    this.authToken.next(token)
+  setAuthToken(token: boolean) {
+    this.authenticated.next(token);
   }
   deleteAuthToken(){
-    this.authToken.next('');
+    this.authenticated.next(false);
   }
   getAuthToken(){
-    return this.authToken;
+    return this.authenticated;
   }
 
   addDesignation(Data:Designation)

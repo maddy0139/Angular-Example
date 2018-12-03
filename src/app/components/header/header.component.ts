@@ -12,9 +12,9 @@ export class HeaderComponent implements OnInit {
   constructor(private _AuthService:AuthService) { }
 
   ngOnInit() {
-    this._AuthService.jwtToken.subscribe(
-      jwtToken=>{
-        if(jwtToken !="")
+    this._AuthService.isAuthenticated.subscribe(
+      isAuthenticated=>{
+        if(isAuthenticated)
         {
           this.isAuthenticated = true;
         }
