@@ -20,17 +20,17 @@
           <nz-form-item>
             <nz-form-control>
               <nz-input-group>
-                <input type="text" nz-input formControlName="designationName" placeholder="Designation Name">
+                <input type="text" nz-input formControlName="name" placeholder="Designation Name">
               </nz-input-group>
-              <nz-form-explain *ngIf="validateForm.get('designationName').dirty && validateForm.get('designationName').errors">Please input designation name!</nz-form-explain>
+              <nz-form-explain *ngIf="validateForm.get('name').dirty && validateForm.get('name').errors">Please input designation name!</nz-form-explain>
             </nz-form-control>
           </nz-form-item>
           <nz-form-item>
             <nz-form-control>
-              <nz-select style="width: 100%;" formControlName="departmentId" [(ngModel)]="selectedValue" nzAllowClear nzPlaceHolder="Select Department">
-                <nz-option *ngFor="let department of departments" nzValue="{{department.id}}" nzLabel="{{department.name}}"></nz-option>
+              <nz-select style="width: 100%;" formControlName="department" [(ngModel)]="selectedDepartment" nzAllowClear nzPlaceHolder="Select Department">
+                <nz-option *ngFor="let department of departments" [nzValue]="department" nzLabel="{{department.name}}"></nz-option>
               </nz-select>
-              <nz-form-explain *ngIf="validateForm.get('departmentId').dirty && validateForm.get('departmentId').errors">Please select department name!</nz-form-explain>
+              <nz-form-explain *ngIf="validateForm.get('department').dirty && validateForm.get('department').errors">Please select department name!</nz-form-explain>
             </nz-form-control>
           </nz-form-item>
         </form>
@@ -51,10 +51,10 @@
       </thead>
       <tbody>
         <tr *ngFor="let data of basicTable.data">
-          <td>{{data.designation}}</td>
-          <td>{{data.department}}</td>
+          <td>{{data.name}}</td>
+          <td>{{data.department.name}}</td>
           <td>
-            <a class="edit-icon"><i nz-icon type="edit"></i></a>
+            <a class="edit-icon" (click)="editDesignation(data)"><i nz-icon type="edit"></i></a>
             <nz-divider nzType="vertical"></nz-divider>
             <a class="delete-icon"><i nz-icon type="delete"></i></a>
           </td>

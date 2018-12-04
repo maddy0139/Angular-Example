@@ -26,7 +26,7 @@
       <nz-form-item>
         <nz-form-control>
           <a routerLink="/forgotpass" class="login-form-forgot" class="login-form-forgot">Forgot password?</a>
-          <button nz-button class="login-form-button" [nzType]="'primary'">Log in</button>
+          <button nz-button class="login-form-button" [nzType]="'primary'" [nzLoading]="isConfirmLoading">Log in</button>
         </nz-form-control>
       </nz-form-item>
     </form>

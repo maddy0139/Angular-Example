@@ -6,9 +6,10 @@ import {
   Validators
 } from '@angular/forms';
 
-import {Designation,IDesignation} from '../../models/DesignationModel';
+import { Designation, IDesignation } from '../../models/DesignationModel';
 import { AuthService } from 'src/app/services/auth.service';
 import { NzNotificationService } from 'ng-zorro-antd';
+import { Department } from '../../models/DepartmentModel';
 
 @Component({
   selector: 'app-designation',
@@ -19,65 +20,69 @@ export class DesignationComponent implements OnInit {
   validateForm: FormGroup;
   isVisible = false;
   isConfirmLoading = false;
-  Designation:Designation;
-  departments=[];
-  designations=[];
-  constructor(private fb: FormBuilder, private _AuthService:AuthService,private notification:NzNotificationService) {
+  Designation: Designation;
+  departments: Department[];
+  designations: Designation[];
+  selectedDepartment = {};
+
+  constructor(private fb: FormBuilder, private _AuthService: AuthService, private notification: NzNotificationService) {
     this.notification.config({
-      nzTop:'70px'
+      nzTop: '70px'
     });
   }
 
   showModal(): void {
     this.isVisible = true;
   }
+  editDesignation(data:Designation):void{
+    this.selectedDepartment =  (data.department);
+    this.validateForm.controls['name'].setValue(data.name);
+    this.showModal();
+  }
   handleCancel(): void {
     this.isVisible = false;
   }
   submitForm(): void {
-    
+
     for (const i in this.validateForm.controls) {
-      this.validateForm.controls[ i ].markAsDirty();
-      this.validateForm.controls[ i ].updateValueAndValidity();
+      this.validateForm.controls[i].markAsDirty();
+      this.validateForm.controls[i].updateValueAndValidity();
     }
-    if(this.validateForm.status === "VALID")
-    {
+    if (this.validateForm.status === "VALID") {
       this.isConfirmLoading = true;
       this.Designation = new Designation(this.validateForm.value);
       this._AuthService.addDesignation(this.Designation).subscribe(
-        (data:any)=>{
-          if(data.status === "SUCCESS")
-          {
+        (data: any) => {
+          if (data.status === "SUCCESS") {
             this.isConfirmLoading = false;
             this.isVisible = false;
-            this.notification.create('success','HRMS', 'Designation added successfully!', { nzDuration: 2000 });
+            this.notification.create('success', 'HRMS', 'Designation added successfully!', { nzDuration: 2000 });
             this.getAllDesignations();
             this.validateForm.reset();
           }
         },
-        error=>{
+        error => {
           console.log(error);
           this.isConfirmLoading = false;
           this.isVisible = false;
-          
-          this.notification.create('error','HRMS', 'Some error occurred', { nzDuration: 2000},);
+
+          this.notification.create('error', 'HRMS', 'Some error occurred', { nzDuration: 2000 }, );
         }
       );
     }
   }
-  getAllDepartments():void{
+  getAllDepartments(): void {
     this._AuthService.getAllDepartments().subscribe(
-      (data:any)=>{
+      (data: any) => {
         this.departments = data.payload;
-        this.departments = [...this.departments];
       }
     );
   }
-  getAllDesignations():void{
+  getAllDesignations(): void {
     this._AuthService.getAllDesignation().subscribe(
-      (data)=>{
+      (data) => {
         this.designations = data.payload
-      },error=>{
+      }, error => {
         console.log(error);
       }
     )
@@ -86,8 +91,8 @@ export class DesignationComponent implements OnInit {
     this.getAllDepartments();
     this.getAllDesignations();
     this.validateForm = this.fb.group({
-      designationName: [ null, [ Validators.required ] ],
-      departmentId :[null,[Validators.required]]
+      name: [null, [Validators.required]],
+      department: [null, [Validators.required]]
     });
   }
 

@@ -7,6 +7,7 @@ import {Department} from '../models/DepartmentModel';
 import {BehaviorSubject} from 'rxjs';
 
 import {map} from 'rxjs/Operators';
+import { SubDepartment,ISubDepartment } from '../models/SubDepartmentModel';
 
 @Injectable({
   providedIn: 'root'
@@ -47,11 +48,19 @@ export class AuthService {
 
   addDesignation(Data:Designation)
   {
-    return this.http.post<any>(`${this.ApiUrl}/designation/new?departmentId=${Data.departmentId}`,{"name":Data.designationName});
+    return this.http.post<any>(`${this.ApiUrl}/designation/new?departmentId=${Data.department.id}`,{"name":Data.name});
   }
   getAllDesignation()
   {
     return this.http.get<any>(`${this.ApiUrl}/designation/all`);
+  }
+  getAllSubDepartments()
+  {
+    return this.http.get<any>(`${this.ApiUrl}/subdepartments/all`)
+  }
+  addSubDepartment(Data:SubDepartment)
+  {
+    return this.http.post<any>(`${this.ApiUrl}/subdepartments/new?departmentId=${Data.department.id}`,{"name":Data.name});
   }
   addDepartment(Data:Department)
   {

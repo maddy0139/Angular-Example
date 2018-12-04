@@ -1,15 +1,20 @@
+import { Department } from "./DepartmentModel";
+
 export interface IDesignation {
-    designationName: string,
-    departmentId?: string,
+    id?:number,
+    name: string,
+    department?: Department,
 }
 
 export class Designation implements IDesignation {
-    designationName: string;
-    departmentId?: string;
-    constructor(Data: any) {
+    id?:number;
+    name: string;
+    department?: Department;
+    constructor(Data: IDesignation) {
         if (Data) {
-            this.designationName = Data.designationName;
-            this.departmentId = Data.departmentId;
+            this.name = Data.name;
+            this.id = Data.id;
+            this.department = Data.department;
         }
     }
 }

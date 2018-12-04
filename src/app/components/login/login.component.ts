@@ -17,7 +17,7 @@ import {User,IUser} from '../../models/UserModel';
 export class LoginComponent implements OnInit {
   validateForm: FormGroup;
   route:ActivatedRoute;
-
+  isConfirmLoading=false;
   User:User;
   
   submitForm(): void {
@@ -27,10 +27,11 @@ export class LoginComponent implements OnInit {
     }
     if(this.validateForm.status === "VALID")
     {
+      this.isConfirmLoading = true;
       this.User = new User(this.validateForm.value);
       this._AuthService.userAuthentication(this.User).subscribe(
         (success:IUser)=>{
-          console.log(success);
+          this.isConfirmLoading = false;
           this.router.navigate(["/myprofile"]);
         },
         error=>{

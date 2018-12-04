@@ -26,6 +26,7 @@ import { DesignationComponent } from 'src/app/components/designation/designation
 import { JwtInterceptor } from 'src/app/services/jwt.interceptor';
 import { DepartmentComponent } from './components/department/department.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
+import { SubDepartmentsComponent } from './components/sub-departments/sub-departments.component';
 
 const appInitializerFn = (appConfig: ConfigService) => {
   return () => {
@@ -50,7 +51,8 @@ registerLocaleData(en);
     DocumentAndIdsComponent,
     ReportingStructureComponent,
     DesignationComponent,
-    DepartmentComponent
+    DepartmentComponent,
+    SubDepartmentsComponent
   ],
   imports: [
     BrowserModule,
