@@ -9,6 +9,7 @@ import { EmployeeDetails } from '../../../models/EmpDetailModel';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  employeeDetails?:EmployeeDetails;
   employeeId:string
   constructor(private _data:AuthService) { }
 
@@ -23,8 +24,9 @@ export class ProfileComponent implements OnInit {
   getEmployeeDetail():void
   {
     this._data.getEmployeeDetail(this.employeeId).subscribe(
-      (data:EmployeeDetails)=>{
+      (data:any)=>{
         console.log(data);
+        this.employeeDetails = data.payload;
       },error=>{
         console.log(error);
       }

@@ -21,8 +21,8 @@
                         <div class="row">
                             <div class="col-md-5 dashed-border p-l-40">
                                 <div class="profile-info-left">
-                                    <h3 class="user-name m-t-0 m-b-0">Mahendra Gohel</h3>
-                                    <small class="text-muted">Solution Developer</small>
+                                    <h3 class="user-name m-t-0 m-b-0">{{employeeDetails.firstName+" "+employeeDetails.lastName+" "+employeeDetails.middleName}}</h3>
+                                    <small class="text-muted">{{employeeDetails.designation.name}}</small>
                                     <div class="staff-id">Employee ID : {{employeeId}}</div>
                                 </div>
                             </div>
@@ -31,18 +31,18 @@
                                     <li>
                                         <span class="title">Phone:</span>
                                         <span class="text">
-                                            <a href="">8000092239</a>
+                                            <a href="">{{employeeDetails.phoneNumber}}</a>
                                         </span>
                                     </li>
                                     <li>
                                         <span class="title">Email:</span>
                                         <span class="text">
-                                            <a href="">mahendra.gohel@spadeworx.com</a>
+                                            <a href="">mahendra.gohel@outlook.com</a>
                                         </span>
                                     </li>
                                     <li>
                                         <span class="title">Birthday:</span>
-                                        <span class="text">16th Sep</span>
+                                        <span class="text">{{employeeDetails.dateOfBirth}}</span>
                                     </li>
                                     <li>
                                         <span class="title">Address:</span>
@@ -50,7 +50,7 @@
                                     </li>
                                     <li>
                                         <span class="title">Gender:</span>
-                                        <span class="text">Male</span>
+                                        <span class="text">{{employeeDetails.gender}}</span>
                                     </li>
                                 </ul>
                             </div>
