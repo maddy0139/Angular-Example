@@ -2,7 +2,7 @@ import { Designation } from "./DesignationModel";
 import { Department } from "./DepartmentModel";
 import { SubDepartment } from "./SubDepartmentModel";
 
-export interface IEmpDetailModel {
+export interface IEmployeeDetails {
     id?: number,
     firstName?: string,
     middleName?: string,
@@ -20,7 +20,7 @@ export interface IEmpDetailModel {
     experience?: DoubleRange
 }
 
-export class EmpDetailModel implements IEmpDetailModel {
+export class EmployeeDetails implements IEmployeeDetails {
     id: number;
     firstName: string;
     middleName: string;
@@ -37,7 +37,7 @@ export class EmpDetailModel implements IEmpDetailModel {
     employmentType: string;
     experience: DoubleRange;
 
-    constructor(Data:IEmpDetailModel)
+    constructor(Data:IEmployeeDetails)
     {
         this.id = Data.id;
         this.firstName = Data.firstName;

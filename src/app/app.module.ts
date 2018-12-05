@@ -27,6 +27,7 @@ import { JwtInterceptor } from 'src/app/services/jwt.interceptor';
 import { DepartmentComponent } from './components/department/department.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { SubDepartmentsComponent } from './components/sub-departments/sub-departments.component';
+import { HomeComponent } from './components/home/home.component';
 
 const appInitializerFn = (appConfig: ConfigService) => {
   return () => {
@@ -40,6 +41,7 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     HeaderComponent,
+    HomeComponent,
     LoginComponent,
     ForgotpassComponent,
     ProfileComponent,

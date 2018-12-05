@@ -7,11 +7,13 @@ import { DesignationComponent } from 'src/app/components/designation/designation
 import { DepartmentComponent } from './components/department/department.component';
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { SubDepartmentsComponent } from './components/sub-departments/sub-departments.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   {
     path:'',
-    component:LoginComponent,
+    component:HomeComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'forgotpass',

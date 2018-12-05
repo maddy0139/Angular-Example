@@ -11,12 +11,16 @@ isAuthenticated=false;
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         
         const user_token = localStorage.getItem("user_token");
+        const employee_id = localStorage.getItem("employee_id");
+        if(employee_id)
+        {
+            this._data.setEmployeeId(employee_id);
+        }
         if (user_token) {
             // logged in so return true
             this._data.setAuthToken(true);
             return true;
         }
-        
         // not logged in so redirect to login page with the return url
         this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
         return false;

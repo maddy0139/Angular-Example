@@ -16,9 +16,10 @@ import {User,IUser} from '../../models/UserModel';
 })
 export class LoginComponent implements OnInit {
   validateForm: FormGroup;
-  route:ActivatedRoute;
+  
   isConfirmLoading=false;
   User:User;
+  returnUrl:string;
   
   submitForm(): void {
     for (const i in this.validateForm.controls) {
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit {
       this._AuthService.userAuthentication(this.User).subscribe(
         (success:IUser)=>{
           this.isConfirmLoading = false;
-          this.router.navigate(["/myprofile"]);
+          this.router.navigateByUrl(this.returnUrl);
         },
         error=>{
           console.log(error);
@@ -41,7 +42,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  constructor(private fb: FormBuilder,private _AuthService:AuthService,private router:Router) {
+  constructor(private route:ActivatedRoute,private fb: FormBuilder,private _AuthService:AuthService,private router:Router) {
   }
 
   ngOnInit(): void {
@@ -49,5 +50,6 @@ export class LoginComponent implements OnInit {
       usernameOrEmail: [ null, [ Validators.required ] ],
       password: [ null, [ Validators.required ] ]
     });
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 }

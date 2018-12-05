@@ -24,5 +24,9 @@ export class ConfigService{
 }
 
 interface IAppConfig {
+    AppName:string;
     ApiUrl:string;
+    error:string;
+    errorMessage:string;
+    formStatus:string;
 }

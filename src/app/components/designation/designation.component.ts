@@ -24,6 +24,7 @@ export class DesignationComponent implements OnInit {
   departments: Department[];
   designations: Designation[];
   selectedDepartment = {};
+  designationId;
 
   constructor(private fb: FormBuilder, private _AuthService: AuthService, private notification: NzNotificationService) {
     this.notification.config({
@@ -34,12 +35,20 @@ export class DesignationComponent implements OnInit {
   showModal(): void {
     this.isVisible = true;
   }
+
   editDesignation(data:Designation):void{
-    this.selectedDepartment =  (data.department);
+    let depIndex = -1;
+    this.departments.map((item,index)=>{
+      if(item.name === data.department.name)
+        depIndex = index;
+    });
+    this.validateForm.controls['department'].setValue(this.departments[depIndex]);
     this.validateForm.controls['name'].setValue(data.name);
+    this.designationId = data.id;
     this.showModal();
   }
   handleCancel(): void {
+    this.validateForm.reset();
     this.isVisible = false;
   }
   submitForm(): void {
@@ -48,27 +57,61 @@ export class DesignationComponent implements OnInit {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
-    if (this.validateForm.status === "VALID") {
+    if (this.validateForm.status === this._AuthService.formStatus) {
       this.isConfirmLoading = true;
       this.Designation = new Designation(this.validateForm.value);
-      this._AuthService.addDesignation(this.Designation).subscribe(
-        (data: any) => {
-          if (data.status === "SUCCESS") {
-            this.isConfirmLoading = false;
-            this.isVisible = false;
-            this.notification.create('success', 'HRMS', 'Designation added successfully!', { nzDuration: 2000 });
-            this.getAllDesignations();
-            this.validateForm.reset();
-          }
-        },
-        error => {
-          console.log(error);
-          this.isConfirmLoading = false;
-          this.isVisible = false;
-
-          this.notification.create('error', 'HRMS', 'Some error occurred', { nzDuration: 2000 }, );
-        }
-      );
+      
+      if(this.designationId)
+      {
+        this.Designation.id = this.designationId;
+        this.updateDesignation(this.Designation);
+      }
+      else
+      {
+        this.addDesignation(this.Designation);
+      }
+    }
+  }
+  addDesignation(designation:Designation):void{
+    this._AuthService.addDesignation(designation).subscribe(
+      (data: any) => {
+        this.successOrErrorHandle(true,data.payload.message,data.status.toLowerCase());
+        this.getAllDesignations();
+      },
+      error => {
+        console.log(error);
+        this.successOrErrorHandle(false,this._AuthService.errorMessage,this._AuthService.error);
+        this.getAllDesignations();
+      }
+    );
+  }
+  updateDesignation(designation:Designation):void{
+    this._AuthService.updateDesignation(designation).subscribe(
+      (data: any) => {
+        this.successOrErrorHandle(true,data.payload.message,data.status.toLowerCase());
+        this.getAllDesignations();
+        this.designationId = undefined;
+      },
+      error => {
+        console.log(error);
+        this.successOrErrorHandle(false,this._AuthService.errorMessage,this._AuthService.error);
+        this.getAllDesignations();
+      }
+    );
+  }
+  successOrErrorHandle(isSuccess:boolean,message:string,status:string):void{
+    if(isSuccess)
+    {
+      this.isConfirmLoading = false;
+      this.isVisible = false;
+      this.notification.create(status, 'HRMS', message, { nzDuration: 2000 });
+      this.validateForm.reset();
+    }
+    else
+    {
+      this.isConfirmLoading = false;
+      this.notification.create(status, 'HRMS', message, { nzDuration: 2000 });
+      this.validateForm.reset();
     }
   }
   getAllDepartments(): void {

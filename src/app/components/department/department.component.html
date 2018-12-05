@@ -44,7 +44,7 @@
         <tr *ngFor="let data of basicTable.data">
           <td>{{data.name}}</td>
           <td>
-            <a class="edit-icon">
+            <a class="edit-icon" (click)="editDepartment(data)">
               <i nz-icon type="edit"></i>
             </a>
             <nz-divider nzType="vertical"></nz-divider>
