@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { EmployeeDetails } from '../../../models/EmpDetailModel';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -9,28 +10,11 @@ import { EmployeeDetails } from '../../../models/EmpDetailModel';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  employeeDetails?:EmployeeDetails;
-  employeeId:string
-  constructor(private _data:AuthService) { }
-
+  @Input() type: string;
+  constructor(private _data:AuthService,private route:ActivatedRoute) { }
   ngOnInit() {
-    this._data.employeeId.subscribe(
-      employeeId=>{
-        this.employeeId = employeeId;
-    });
-    this.getEmployeeDetail();
-  }
+    this.type = this.route.snapshot.queryParamMap.get('action');
 
-  getEmployeeDetail():void
-  {
-    this._data.getEmployeeDetail(this.employeeId).subscribe(
-      (data:any)=>{
-        console.log(data);
-        this.employeeDetails = data.payload;
-      },error=>{
-        console.log(error);
-      }
-    );
   }
 
 }

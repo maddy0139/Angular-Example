@@ -1,0 +1,53 @@
+<div class="profile">
+    <div class="row">
+
+    </div>
+    <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
+        <h3>Login</h3>
+        <div class="card-box">
+            <div class="row">
+                <div class="col-md-6">
+                    <nz-form-item>
+                        <nz-form-control>
+                            <nz-input-group >
+                                <input type="text" nz-input formControlName="firstName" placeholder="First Name">
+                            </nz-input-group>
+                            <nz-form-explain *ngIf="validateForm.get('firstName').dirty && validateForm.get('firstName').errors">Please input your first name!</nz-form-explain>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div class="col-md-6">
+                    <nz-form-item>
+                        <nz-form-control>
+                            <nz-input-group >
+                                <input type="text" nz-input formControlName="middleName" placeholder="Middle Name">
+                            </nz-input-group>
+                            <nz-form-explain *ngIf="validateForm.get('middleName').dirty && validateForm.get('middleName').errors">Please input your first name!</nz-form-explain>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <nz-form-item>
+                        <nz-form-control>
+                            <nz-input-group >
+                                <input type="text" nz-input formControlName="lastName" placeholder="Last Name">
+                            </nz-input-group>
+                            <nz-form-explain *ngIf="validateForm.get('lastName').dirty && validateForm.get('lastName').errors">Please input your last name!</nz-form-explain>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div class="col-md-6">
+                    <nz-form-item>
+                        <nz-form-control>
+                            <nz-date-picker [(ngModel)]="dateOfBirth" (ngModelChange)="onChange($event)"></nz-date-picker>
+                            <nz-form-explain *ngIf="validateForm.get('dateOfBirth').dirty && validateForm.get('dateOfBirth').errors">Please input your first name!</nz-form-explain>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+</div>

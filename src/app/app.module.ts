@@ -28,6 +28,9 @@ import { DepartmentComponent } from './components/department/department.componen
 import { AuthGuard } from 'src/app/guards/auth.guard';
 import { SubDepartmentsComponent } from './components/sub-departments/sub-departments.component';
 import { HomeComponent } from './components/home/home.component';
+import { ViewProfileComponent } from './components/employee/profile/view-profile/view-profile.component';
+import { AddProfileComponent } from './components/employee/profile/add-profile/add-profile.component';
+import { UpdateProfileComponent } from './components/employee/profile/update-profile/update-profile.component';
 
 const appInitializerFn = (appConfig: ConfigService) => {
   return () => {
@@ -44,6 +47,9 @@ registerLocaleData(en);
     HomeComponent,
     LoginComponent,
     ForgotpassComponent,
+    ViewProfileComponent,
+    AddProfileComponent,
+    UpdateProfileComponent,
     ProfileComponent,
     AddressComponent,
     EmploymentDetailsComponent,

@@ -1,0 +1,91 @@
+<div class="profile">
+  <div class="row">
+      <div class="col-sm-8">
+          <h4 class="page-title">My Profile</h4>
+      </div>
+
+      <div class="col-sm-4 text-right m-b-30">
+          <button nz-button [nzType]="'primary'">Edit Profile</button>
+      </div>
+  </div>
+  <div class="card-box">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="profile-preview">
+                  <div class="profile-img-wrap">
+                      <div class="user-avatar">
+                          <i nz-icon type="user"></i>
+                      </div>
+                  </div>
+                  <div class="profile-basic">
+                      <div class="row">
+                          <div class="col-md-5 dashed-border p-l-40">
+                              <div class="profile-info-left">
+                                  <h3 class="user-name m-t-0 m-b-0">{{employeeDetails.firstName+" "+employeeDetails.lastName+" "+employeeDetails.middleName}}</h3>
+                                  <small class="text-muted">{{employeeDetails.designation.name}}</small>
+                                  <div class="staff-id">Employee ID : {{employeeId}}</div>
+                              </div>
+                          </div>
+                          <div class="col-md-7 p-l-40">
+                              <ul class="personal-info">
+                                  <li>
+                                      <span class="title">Phone:</span>
+                                      <span class="text">
+                                          <a href="">{{employeeDetails.phoneNumber}}</a>
+                                      </span>
+                                  </li>
+                                  <li>
+                                      <span class="title">Email:</span>
+                                      <span class="text">
+                                          <a href="">mahendra.gohel@outlook.com</a>
+                                      </span>
+                                  </li>
+                                  <li>
+                                      <span class="title">Birthday:</span>
+                                      <span class="text">{{employeeDetails.dateOfBirth}}</span>
+                                  </li>
+                                  <li>
+                                      <span class="title">Address:</span>
+                                      <span class="text">Hinjewadi Pune - 411057</span>
+                                  </li>
+                                  <li>
+                                      <span class="title">Gender:</span>
+                                      <span class="text">{{employeeDetails.gender}}</span>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-3">
+          <app-skills [data]="skillData"></app-skills>
+      </div>
+      <div class="col-md-9">
+          <app-education></app-education>
+          <app-experience></app-experience>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-4">
+          <app-address></app-address>
+      </div>
+      <div class="col-md-4">
+          <app-address></app-address>
+      </div>
+      <div class="col-md-4">
+          <app-address></app-address>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-6">
+          <app-document-and-ids></app-document-and-ids>
+      </div>
+      <div class="col-md-6">
+          <app-reporting-structure></app-reporting-structure>
+      </div>
+  </div>
+</div>
