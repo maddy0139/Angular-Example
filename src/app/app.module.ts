@@ -31,6 +31,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ViewProfileComponent } from './components/employee/profile/view-profile/view-profile.component';
 import { AddProfileComponent } from './components/employee/profile/add-profile/add-profile.component';
 import { UpdateProfileComponent } from './components/employee/profile/update-profile/update-profile.component';
+import { RegistrationComponent } from 'src/app/components/employee/registration/registration.component';
 
 const appInitializerFn = (appConfig: ConfigService) => {
   return () => {
@@ -60,7 +61,8 @@ registerLocaleData(en);
     ReportingStructureComponent,
     DesignationComponent,
     DepartmentComponent,
-    SubDepartmentsComponent
+    SubDepartmentsComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,

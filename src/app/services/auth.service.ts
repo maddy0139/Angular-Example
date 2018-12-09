@@ -14,7 +14,7 @@ import { SubDepartment,ISubDepartment } from '../models/SubDepartmentModel';
 })
 export class AuthService {
 
-  AppName:String;
+  AppName:string;
   ApiUrl:string;
   error:string;
   errorMessage:string;
@@ -49,6 +49,11 @@ export class AuthService {
         return data;
       })
     )
+  }
+
+  userRegistration(Data:any)
+  {
+    return this.http.post<any>(`${this.ApiUrl}/auth/signup`,Data);
   }
 
   setAuthToken(token: boolean) {

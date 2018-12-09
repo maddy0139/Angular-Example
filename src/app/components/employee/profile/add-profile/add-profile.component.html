@@ -1,3 +1,184 @@
-<p>
-  add-profile works!
-</p>
+<div class="profile">
+  <div class="row">
+    <div class="col-sm-8">
+      <h4 class="page-title">Employee Profile</h4>
+    </div>
+  </div>
+  <form nz-form [formGroup]="validateForm" class="add-employee-form" (ngSubmit)="submitForm()">
+    <div class="card-box">
+      <div class="row">
+        <div class="col-md-6">
+          <nz-form-item>
+            <nz-form-control>
+              <nz-input-group [nzCompact]="true" nzSize="large" style="border-radius:10px;">
+                <label for="firstName">First Name</label>
+                <input id="firstName" type="text" nz-input formControlName="firstName" placeholder="First name">
+              </nz-input-group>
+              <nz-form-explain *ngIf="validateForm.get('firstName').dirty && validateForm.get('firstName').errors">Please input first name!</nz-form-explain>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-md-6">
+          <nz-form-item>
+            <nz-form-control>
+              <nz-input-group [nzCompact]="true" nzSize="large" style="border-radius:10px;">
+                <label>Middle Name</label>
+                <input type="text" nz-input formControlName="middleName" placeholder="Middle name">
+              </nz-input-group>
+              <nz-form-explain *ngIf="validateForm.get('middleName').dirty && validateForm.get('middleName').errors">Please input middle name!</nz-form-explain>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <nz-form-item>
+            <nz-form-control>
+              <nz-input-group [nzCompact]="true" nzSize="large">
+                <label for="lastName">Last Name</label>
+                <input id="lastName" type="text" nz-input formControlName="lastName" placeholder="Last name">
+              </nz-input-group>
+              <nz-form-explain *ngIf="validateForm.get('lastName').dirty && validateForm.get('lastName').errors">Please input last name!</nz-form-explain>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-md-3">
+          <nz-form-item>
+            <nz-form-control>
+              <nz-input-group [nzCompact]="true" nzSize="large" style="border-radius:10px;">
+                <label style="margin-bottom:0px !important;line-height:1!important;">Date Of Birth</label>
+                <br/>
+                <nz-date-picker nzPlaceHolder="Date Of Birth" nzSize="large" [nzStyle]="{'width':'250px','margin-top':'8px'}" formControlName="dateOfBirth"
+                  [(ngModel)]="selectedDateOfBirth" (ngModelChange)="onChange($event)"></nz-date-picker>
+                <nz-form-explain *ngIf="validateForm.get('dateOfBirth').dirty && validateForm.get('dateOfBirth').errors">Please input date of birth!</nz-form-explain>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-md-3">
+          <nz-form-item>
+            <nz-form-control>
+              <nz-input-group [nzCompact]="true" nzSize="large" style="border-radius:10px;">
+                <label style="margin-bottom:0px !important;line-height:1!important;">Date Of Joining</label>
+                <br/>
+                <nz-date-picker nzPlaceHolder="Date Of Joining" nzSize="large" [nzStyle]="{'width':'250px','margin-top':'8px'}" formControlName="dateOfjoining"
+                  [(ngModel)]="selectedDateOfBirth" (ngModelChange)="onChange($event)"></nz-date-picker>
+                <nz-form-explain *ngIf="validateForm.get('dateOfjoining').dirty && validateForm.get('dateOfjoining').errors">Please input date of joining!</nz-form-explain>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <nz-form-item>
+            <nz-form-control>
+              <nz-input-group [nzCompact]="true" nzSize="large" style="border-radius:10px;">
+                <label style="margin-bottom:0px !important;line-height:1!important;">Gender</label>
+                <nz-select nzSize="large" style="width: 100%;margin-top:8px;" formControlName="gender" [(ngModel)]="selectedGender" nzAllowClear
+                  nzPlaceHolder="Select Gender">
+                  <nz-option nzValue="MALE" nzLabel="Male"></nz-option>
+                  <nz-option nzValue="FEMALE" nzLabel="Female"></nz-option>
+                  <nz-option nzValue="OTHER" nzLabel="Other"></nz-option>
+                </nz-select>
+                <nz-form-explain *ngIf="validateForm.get('gender').dirty && validateForm.get('gender').errors">Please select gender!</nz-form-explain>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-md-6">
+            <nz-form-item>
+              <nz-form-control>
+                <nz-input-group [nzCompact]="true" nzSize="large" style="border-radius:10px;">
+                  <label>Experience</label>
+                  <input type="text" nz-input formControlName="experience" placeholder="Experience">
+                </nz-input-group>
+                <nz-form-explain *ngIf="validateForm.get('experience').dirty && validateForm.get('experience').errors">Please input experience!</nz-form-explain>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+      </div>
+    </div>
+    <div class="card-box">
+      <div class="row">
+        <div class="col-md-6">
+          <nz-form-item>
+            <nz-form-control>
+              <nz-input-group [nzCompact]="true" style="border-radius:10px;">
+                <label>Department</label>
+                <nz-select nzSize="large" style="width: 100%;" formControlName="department" [(ngModel)]="selectedDepartment" nzAllowClear
+                  nzPlaceHolder="Select Department">
+                  <nz-option *ngFor="let department of departments" [nzValue]="department" nzLabel="{{department.name}}"></nz-option>
+                </nz-select>
+                <nz-form-explain *ngIf="validateForm.get('department').dirty && validateForm.get('department').errors">Please select department name!</nz-form-explain>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-md-6">
+          <nz-form-item>
+            <nz-form-control>
+              <nz-input-group [nzCompact]="true" style="border-radius:10px;">
+                <label>Sub Department</label>
+                <nz-select nzSize="large" style="width: 100%;" formControlName="subDepartment" [(ngModel)]="selectedsubDepartment" nzAllowClear
+                  nzPlaceHolder="Select Sub Department">
+                  <nz-option *ngFor="let subDepartment of subDepartments" [nzValue]="subDepartment" nzLabel="{{subDepartment.name}}"></nz-option>
+                </nz-select>
+                <nz-form-explain *ngIf="validateForm.get('subDepartment').dirty && validateForm.get('subDepartment').errors">Please select sub department name!</nz-form-explain>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <nz-form-item>
+            <nz-form-control>
+              <nz-input-group [nzCompact]="true" style="border-radius:10px;">
+                <label>Designation</label>
+                <nz-select nzSize="large" style="width: 100%;" formControlName="designation" [(ngModel)]="selectedDesignation" nzAllowClear
+                  nzPlaceHolder="Select Designation">
+                  <nz-option *ngFor="let designation of designations" [nzValue]="designation" nzLabel="{{designation.name}}"></nz-option>
+                </nz-select>
+                <nz-form-explain *ngIf="validateForm.get('designation').dirty && validateForm.get('designation').errors">Please select designation name!</nz-form-explain>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div class="col-md-6">
+          <nz-form-item>
+            <nz-form-control>
+              <nz-input-group [nzCompact]="true" nzSize="large" style="border-radius:10px;">
+                <label style="margin-bottom:0px !important;line-height:1!important;">Employment Type</label>
+                <nz-select nzSize="large" style="width: 100%;margin-top:8px;" formControlName="employmentType" [(ngModel)]="selectedEmploymentType"
+                  nzAllowClear nzPlaceHolder="Employment Type">
+                  <nz-option nzValue="PERMANENT" nzLabel="Permanent"></nz-option>
+                  <nz-option nzValue="PROBATION" nzLabel="Probation"></nz-option>
+                  <nz-option nzValue="CONTRACT" nzLabel="Contract"></nz-option>
+                </nz-select>
+                <nz-form-explain *ngIf="validateForm.get('employmentType').dirty && validateForm.get('employmentType').errors">Please select employment type!</nz-form-explain>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <nz-form-item>
+            <nz-form-control>
+              <nz-input-group [nzCompact]="true" nzSize="large" style="border-radius:10px;">
+                <label style="margin-bottom:0px !important;line-height:1!important;">Employment Status</label>
+                <nz-select nzSize="large" style="width: 100%;margin-top:8px;" formControlName="employmentStatus" [(ngModel)]="selectedEmploymentStatus"
+                  nzAllowClear nzPlaceHolder="Select Employment Status">
+                  <nz-option nzValue="CURRENT" nzLabel="Current"></nz-option>
+                  <nz-option nzValue="PREVIOUS" nzLabel="Previous"></nz-option>
+                </nz-select>
+                <nz-form-explain *ngIf="validateForm.get('employmentStatus').dirty && validateForm.get('employmentStatus').errors">Please select employment status!</nz-form-explain>
+              </nz-input-group>
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        
+      </div>
+    </div>
+  </form>

@@ -1,12 +1,8 @@
 {
-<<<<<<< HEAD
     "AppName":"HRMS",
     "ApiUrl":"http://spadeworx-hrms-hrms-portal.1d35.starter-us-east-1.openshiftapps.com/api",
     "error":"error",
     "errorMessage":"Some error occured",
     "formStatus":"VALID"
 
-=======
-    "ApiUrl":"http://spadeworx-hrms-hrms-portal.1d35.starter-us-east-1.openshiftapps.com//api"
->>>>>>> 11882a97c3f0db1f177d8c38fa7ed34fd0e81df3
 }

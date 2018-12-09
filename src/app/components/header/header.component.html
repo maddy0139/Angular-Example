@@ -8,16 +8,25 @@
     </ul>
     <ul  [style.visibility]="isAuthenticated ? 'visible' : 'hidden'" nz-menu [nzMode]="'horizontal'" class="nav-menu">
       <li routerLink="" nz-menu-item class="header-icon"><i nz-icon type="home" style="font-size: 21px;"></i></li>
-      <li nz-submenu class="header-icon">
+      <li  nz-submenu class="header-icon">
         <span title><i nz-icon type="user" style="font-size: 21px;"></i></span>
         <ul>
-          <li routerLink="/designations" nz-menu-item>Designations</li>
+          <li routerLink="/profile" [queryParams]="{action:'view'}" nz-menu-item>My Profile</li>
+          <li routerLink="/departments" nz-menu-item>My Salary</li>
+          <li routerLink="/sub-departments" nz-menu-item>My Leaves</li>
+        </ul>
+      </li>
+
+      <li nz-submenu class="header-icon">
+        <span title><i nz-icon type="setting" style="font-size: 21px;"></i></span>
+        <ul>
+            <li routerLink="/registration" nz-menu-item>Register Employee</li>
+          <li routerLink="/profile" [queryParams]="{action:'add'}" nz-menu-item>Add Employee</li>
           <li routerLink="/departments" nz-menu-item>Departments</li>
           <li routerLink="/sub-departments" nz-menu-item>Sub Departments</li>
           <li (click)="logout()" nz-menu-item>Logout</li>
         </ul>
-      </li>
-      <li nz-menu-item class="header-icon"><i nz-icon type="setting" style="font-size: 21px;"></i></li>
+      </li>      
       
     </ul>
   </div>

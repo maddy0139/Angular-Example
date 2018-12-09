@@ -9,6 +9,7 @@ import { AuthGuard } from 'src/app/guards/auth.guard';
 import { SubDepartmentsComponent } from './components/sub-departments/sub-departments.component';
 import { HomeComponent } from './components/home/home.component';
 import { ViewProfileComponent } from './components/employee/profile/view-profile/view-profile.component';
+import { RegistrationComponent } from 'src/app/components/employee/registration/registration.component';
 
 const routes: Routes = [
   {
@@ -48,6 +49,11 @@ const routes: Routes = [
     path:'sub-departments',
     component:SubDepartmentsComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path:'registration',
+    component:RegistrationComponent,
+    canActivate:[AuthGuard]
   }
 ];
 

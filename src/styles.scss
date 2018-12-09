@@ -20,6 +20,12 @@ body{
     .ant-menu-horizontal .ant-menu-item{
         margin-top: 0px !important;
     }
+    .ant-input-group.ant-input-group-compact> *:last-child{
+        border-radius: 4px !important;
+    }
+    .ant-input-group.ant-input-group-compact > .ant-calendar-picker:last-child .ant-input{
+        border-radius: 4px !important;        
+    }
     #container {
    
         .data-container{

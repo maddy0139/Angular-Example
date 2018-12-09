@@ -1,0 +1,26 @@
+.login-box{
+    width: 400px;
+    margin: 0 auto;
+    box-shadow: 0 6px 15px rgba(36, 37, 38, 0.08);
+  .login-form-wrapper{
+    background-color: #fff;
+    padding: 30px;
+  }
+  .account-logo {
+    margin-bottom: 20px;
+    text-align: center;
+    display: none;
+}
+  .login-form {
+      max-width: 300px;
+      margin: auto;
+    }
+
+    .login-form-forgot {
+      float: right;
+    }
+
+    .login-form-button {
+      width: 100%;
+    }
+}

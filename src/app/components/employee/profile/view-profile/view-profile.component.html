@@ -21,8 +21,8 @@
                       <div class="row">
                           <div class="col-md-5 dashed-border p-l-40">
                               <div class="profile-info-left">
-                                  <h3 class="user-name m-t-0 m-b-0">{{employeeDetails.firstName+" "+employeeDetails.lastName+" "+employeeDetails.middleName}}</h3>
-                                  <small class="text-muted">{{employeeDetails.designation.name}}</small>
+                                  <h3 class="user-name m-t-0 m-b-0">{{employeeDetails?.firstName+" "+employeeDetails?.lastName+" "+employeeDetails?.middleName}}</h3>
+                                  <small class="text-muted">{{employeeDetails?.designation.name}}</small>
                                   <div class="staff-id">Employee ID : {{employeeId}}</div>
                               </div>
                           </div>
@@ -31,7 +31,7 @@
                                   <li>
                                       <span class="title">Phone:</span>
                                       <span class="text">
-                                          <a href="">{{employeeDetails.phoneNumber}}</a>
+                                          <a href="">{{employeeDetails?.phoneNumber}}</a>
                                       </span>
                                   </li>
                                   <li>
@@ -42,7 +42,7 @@
                                   </li>
                                   <li>
                                       <span class="title">Birthday:</span>
-                                      <span class="text">{{employeeDetails.dateOfBirth}}</span>
+                                      <span class="text">{{employeeDetails?.dateOfBirth}}</span>
                                   </li>
                                   <li>
                                       <span class="title">Address:</span>
@@ -50,7 +50,7 @@
                                   </li>
                                   <li>
                                       <span class="title">Gender:</span>
-                                      <span class="text">{{employeeDetails.gender}}</span>
+                                      <span class="text">{{employeeDetails?.gender}}</span>
                                   </li>
                               </ul>
                           </div>
